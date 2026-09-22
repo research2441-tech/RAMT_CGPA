@@ -1,0 +1,80 @@
+seed: 42
+
+data:
+  primary_csv: ""
+  external_csvs: []
+  target_column: ""
+  id_column: ""
+  demo_samples: 920
+  demo_features: 13
+  severity_classes: 5
+  test_size: 0.10
+  validation_size: 0.10
+  cv_folds: 10
+  missing_strategy: median
+  scale_numeric: true
+
+privacy:
+  epsilon: 1.0
+  delta: 1.0e-5
+  tier1_risk_threshold: 0.65
+  tier2_utility_threshold: 0.20
+  identity_weight: 0.60
+  utility_weight: 0.40
+
+sfrs:
+  max_features: 10
+  min_features: 5
+  similarity_sigma: 1.0
+  relevance_weight: 0.70
+  redundancy_weight: 0.30
+
+mhkan:
+  enabled: true
+  hidden_dim: 64
+  embedding_dim: 32
+  num_heads: 4
+  num_layers: 2
+  spline_grid_size: 8
+  spline_degree: 3
+  dropout: 0.10
+  epochs: 20
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 5
+
+ajs:
+  population: 12
+  iterations: 15
+  metric: macro_f1
+
+xgboost:
+  n_estimators: [150, 500]
+  max_depth: [3, 10]
+  learning_rate: [0.01, 0.20]
+  subsample: [0.65, 1.0]
+  colsample_bytree: [0.65, 1.0]
+  min_child_weight: [1, 10]
+  gamma: [0.0, 1.0]
+  reg_alpha: [0.0, 2.0]
+  reg_lambda: [0.5, 5.0]
+
+security:
+  kem_algorithm: Kyber1024
+  secret_shares: 7
+  normal_threshold: 5
+  emergency_threshold: 2
+  benchmark_repetitions: 100
+  payload_bytes: 2048
+
+dag:
+  node_counts: [4, 8, 16, 32, 64]
+  transaction_counts: [100, 1000, 10000]
+  payload_bytes: 96
+  workers: 8
+
+statistics:
+  confidence: 0.95
+  bootstrap_iterations: 2000
+  alpha: 0.05
